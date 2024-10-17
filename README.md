@@ -8,7 +8,9 @@
 
 - ### 关于提交信息格式
 
-详见：https://gist.github.com/develar/273e2eb938792cf5f86451fbac2bcd51，有详细的git commit的信息提交格式，所有提交必须使用feat，docs，fix之类的单词开头，然后用冒号进行分割，冒号后面写明做了什么事情。
+详见：https://gist.github.com/develar/273e2eb938792cf5f86451fbac2bcd51
+
+有详细的git commit的信息提交格式，所有提交必须使用feat，docs，fix之类的单词开头，然后用冒号进行分割，冒号后面写明做了什么事情。
 
 - ### 关于代码冲突
 
