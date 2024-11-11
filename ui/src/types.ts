@@ -7,6 +7,9 @@ export interface IApplication {
     internal: boolean;
     defaultPriority: number;
     lastUsed: string | null;
+    isEnabled: boolean;
+    isRunning: boolean;
+    intervalTime: number;
 }
 
 export interface IClient {

@@ -20,7 +20,7 @@ export class AppStore extends BaseStore<IApplication> {
     protected requestDelete = (id: number): Promise<void> =>
         axios.delete(`${config.get('url')}application/${id}`).then(() => {
             this.onDelete();
-            return this.snack('Application deleted');
+            return this.snack('应用已删除');
         });
 
     @action
@@ -31,7 +31,7 @@ export class AppStore extends BaseStore<IApplication> {
             headers: {'content-type': 'multipart/form-data'},
         });
         await this.refresh();
-        this.snack('Application image updated');
+        this.snack('应用图像已上传');
     };
 
     @action
@@ -47,7 +47,7 @@ export class AppStore extends BaseStore<IApplication> {
             defaultPriority,
         });
         await this.refresh();
-        this.snack('Application updated');
+        this.snack('应用已更新');
     };
 
     @action
@@ -62,11 +62,23 @@ export class AppStore extends BaseStore<IApplication> {
             defaultPriority,
         });
         await this.refresh();
-        this.snack('Application created');
+        this.snack('应用已创建');
     };
+
+    @action
+    public setAuto = async (
+        appId: number,
+        isAuto: boolean
+    ): Promise<void> => {
+        await axios.put(`${config.get('url')}application/enabled/${appId}`, {
+            isAuto
+        });
+        await this.refresh();
+        this.snack('应用状态已更新');
+    }
 
     public getName = (id: number): string => {
         const app = this.getByIDOrUndefined(id);
-        return id === -1 ? 'All Messages' : app !== undefined ? app.name : 'unknown';
+        return id === -1 ? '所有消息' : app !== undefined ? app.name : '未知应用';
     };
 }

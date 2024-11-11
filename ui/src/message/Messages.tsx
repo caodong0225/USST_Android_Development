@@ -99,16 +99,16 @@ class Messages extends Component<IProps & Stores<'messagesStore' | 'appStore'>, 
                             {messages.map(this.renderMessage)}
                         </ReactInfinite>
 
-                        {hasMore ? <LoadingSpinner /> : this.label("You've reached the end")}
+                        {hasMore ? <LoadingSpinner /> : this.label("您已到底")}
                     </div>
                 ) : (
-                    this.label('No messages')
+                    this.label('没有消息')
                 )}
 
                 {this.deleteAll && (
                     <ConfirmDialog
-                        title="Confirm Delete"
-                        text={'Delete all messages?'}
+                        title="确认删除"
+                        text={'你确认删除所有消息吗?'}
                         fClose={() => (this.deleteAll = false)}
                         fOnSubmit={() => messagesStore.removeByApp(appId)}
                     />

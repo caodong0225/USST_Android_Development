@@ -73,11 +73,11 @@ export class MessagesStore {
     public removeByApp = async (appId: number) => {
         if (appId === AllMessages) {
             await axios.delete(config.get('url') + 'message');
-            this.snack('Deleted all messages');
+            this.snack('已删除所有消息');
             this.clearAll();
         } else {
             await axios.delete(config.get('url') + 'application/' + appId + '/message');
-            this.snack(`Deleted all messages from ${this.appStore.getByID(appId).name}`);
+            this.snack(`已从 ${this.appStore.getByID(appId).name} 删除所有消息`);
             this.clear(AllMessages);
             this.clear(appId);
         }
@@ -93,7 +93,7 @@ export class MessagesStore {
         if (this.exists(message.appid)) {
             this.removeFromList(this.state[message.appid].messages, message);
         }
-        this.snack('Message deleted');
+        this.snack('消息已删除');
     };
 
     @action

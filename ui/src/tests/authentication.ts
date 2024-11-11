@@ -10,8 +10,8 @@ export const login = async (page: Page, user = 'admin', pass = 'admin'): Promise
     await page.type($loginForm.input('.name'), user);
     await page.type($loginForm.input('.password'), pass);
     await page.click($loginForm.button('.login'));
-    await waitForExists(page, selector.heading(), 'All Messages');
-    await waitForExists(page, 'button', 'logout');
+    await waitForExists(page, selector.heading(), '所有消息');
+    await waitForExists(page, 'button', '登出');
 };
 
 export const logout = async (page: Page): Promise<void> => {

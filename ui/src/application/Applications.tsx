@@ -22,6 +22,7 @@ import * as config from '../config';
 import UpdateDialog from './UpdateApplicationDialog';
 import {IApplication} from '../types';
 import {LastUsedCell} from '../common/LastUsedCell';
+import AutoSwitch from "../common/AutoSwitch";
 
 @observer
 class Applications extends Component<Stores<'appStore'>> {
@@ -54,7 +55,7 @@ class Applications extends Component<Stores<'appStore'>> {
                         variant="contained"
                         color="primary"
                         onClick={() => (this.createDialog = true)}>
-                        Create Application
+                        创建应用
                     </Button>
                 }
                 maxWidth={1000}>
@@ -64,11 +65,13 @@ class Applications extends Component<Stores<'appStore'>> {
                             <TableHead>
                                 <TableRow>
                                     <TableCell padding="checkbox" style={{width: 80}} />
-                                    <TableCell>Name</TableCell>
+                                    <TableCell>应用名</TableCell>
                                     <TableCell>Token</TableCell>
-                                    <TableCell>Description</TableCell>
-                                    <TableCell>Priority</TableCell>
-                                    <TableCell>Last Used</TableCell>
+                                    <TableCell>参数</TableCell>
+                                    <TableCell>优先级</TableCell>
+                                    <TableCell>最近使用</TableCell>
+                                    <TableCell>是否启用</TableCell>
+                                    <TableCell>刷新频率（秒）</TableCell>
                                     <TableCell />
                                     <TableCell />
                                 </TableRow>
@@ -87,6 +90,11 @@ class Applications extends Component<Stores<'appStore'>> {
                                         fDelete={() => (this.deleteId = app.id)}
                                         fEdit={() => (this.updateId = app.id)}
                                         noDelete={app.internal}
+                                        fSetAuto={
+                                            (newValue) => (this.props.appStore.setAuto(app.id,newValue))
+                                        }
+                                        interval={app.intervalTime}
+                                        enabled = {app.isEnabled}
                                     />
                                 ))}
                             </TableBody>
@@ -118,8 +126,8 @@ class Applications extends Component<Stores<'appStore'>> {
                 )}
                 {deleteId !== false && (
                     <ConfirmDialog
-                        title="Confirm Delete"
-                        text={'Delete ' + appStore.getByID(deleteId).name + '?'}
+                        title="确定删除吗"
+                        text={'删除 ' + appStore.getByID(deleteId).name + '?'}
                         fClose={() => (this.deleteId = false)}
                         fOnSubmit={() => appStore.remove(deleteId)}
                     />
@@ -159,7 +167,11 @@ interface IRowProps {
     image: string;
     fDelete: VoidFunction;
     fEdit: VoidFunction;
+    fSetAuto: (newValue: boolean) => void;
+    interval: number;
+    enabled: boolean;
 }
+
 
 const Row: SFC<IRowProps> = observer(
     ({
@@ -173,6 +185,9 @@ const Row: SFC<IRowProps> = observer(
         fUpload,
         image,
         fEdit,
+         fSetAuto,
+        interval,
+        enabled,
     }) => (
         <TableRow>
             <TableCell padding="default">
@@ -192,6 +207,13 @@ const Row: SFC<IRowProps> = observer(
             <TableCell>
                 <LastUsedCell lastUsed={lastUsed} />
             </TableCell>
+            <TableCell>
+                <AutoSwitch
+                    isAuto={enabled}
+                    onToggle={fSetAuto}
+                />
+            </TableCell>
+            <TableCell>{interval}</TableCell>
             <TableCell align="right" padding="none">
                 <IconButton onClick={fEdit} className="edit">
                     <Edit />

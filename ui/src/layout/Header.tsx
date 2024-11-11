@@ -11,7 +11,6 @@ import ExitToApp from '@material-ui/icons/ExitToApp';
 import Highlight from '@material-ui/icons/Highlight';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import MenuIcon from '@material-ui/icons/Menu';
-import Apps from '@material-ui/icons/Apps';
 import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
 import React, {Component, CSSProperties} from 'react';
 import {Link} from 'react-router-dom';
@@ -119,7 +118,7 @@ class Header extends Component<IProps> {
                         </IconButton>
 
                         <a
-                            href="https://github.com/gotify/server"
+                            href="https://github.com/caodong0225/USST_Android_Development"
                             className={classes.link}
                             target="_blank"
                             rel="noopener noreferrer">
@@ -147,7 +146,7 @@ class Header extends Component<IProps> {
                     <ResponsiveButton
                         icon={<MenuIcon />}
                         onClick={() => setNavOpen(true)}
-                        label="menu"
+                        label="目录"
                         width={width}
                         color="inherit"
                     />
@@ -156,31 +155,31 @@ class Header extends Component<IProps> {
                     <Link className={classes.link} to="/users" id="navigate-users">
                         <ResponsiveButton
                             icon={<SupervisorAccount />}
-                            label="users"
+                            label="管理用户"
                             width={width}
                             color="inherit"
                         />
                     </Link>
                 )}
                 <Link className={classes.link} to="/applications" id="navigate-apps">
-                    <ResponsiveButton icon={<Chat />} label="apps" width={width} color="inherit" />
+                    <ResponsiveButton icon={<Chat />} label="应用列表" width={width} color="inherit" />
                 </Link>
                 <Link className={classes.link} to="/clients" id="navigate-clients">
                     <ResponsiveButton
                         icon={<DevicesOther />}
-                        label="clients"
+                        label="客户端列表"
                         width={width}
                         color="inherit"
                     />
                 </Link>
-                <Link className={classes.link} to="/plugins" id="navigate-plugins">
-                    <ResponsiveButton
-                        icon={<Apps />}
-                        label="plugins"
-                        width={width}
-                        color="inherit"
-                    />
-                </Link>
+                {/*<Link className={classes.link} to="/plugins" id="navigate-plugins">*/}
+                {/*    <ResponsiveButton*/}
+                {/*        icon={<Apps />}*/}
+                {/*        label="plugins"*/}
+                {/*        width={width}*/}
+                {/*        color="inherit"*/}
+                {/*    />*/}
+                {/*</Link>*/}
                 <ResponsiveButton
                     icon={<AccountCircle />}
                     label={name}
@@ -191,7 +190,7 @@ class Header extends Component<IProps> {
                 />
                 <ResponsiveButton
                     icon={<ExitToApp />}
-                    label="Logout"
+                    label="登出"
                     onClick={logout}
                     id="logout"
                     width={width}

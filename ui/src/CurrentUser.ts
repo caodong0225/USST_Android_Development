@@ -47,18 +47,18 @@ export class CurrentUser {
             .create()
             .post(config.get('url') + 'user', {name, pass})
             .then(() => {
-                this.snack('User Created. Logging in...');
+                this.snack('注册成功，登陆中...');
                 this.login(name, pass);
                 return true;
             })
             .catch((error: AxiosError) => {
                 if (!error || !error.response) {
-                    this.snack('No network connection or server unavailable.');
+                    this.snack('网络不可用或服务器错误');
                     return false;
                 }
                 const {data} = error.response;
                 this.snack(
-                    `Register failed: ${data?.error ?? 'unknown'}: ${data?.errorDescription ?? ''}`
+                    `注册失败: ${data?.error ?? '未知错误'}: ${data?.errorDescription ?? ''}`
                 );
                 return false;
             });
@@ -78,7 +78,7 @@ export class CurrentUser {
                 headers: {Authorization: 'Basic ' + Base64.encode(username + ':' + password)},
             })
             .then((resp: AxiosResponse<IClient>) => {
-                this.snack(`A client named '${name}' was created for your session.`);
+                this.snack(`客户端 '${name}' 已被创建`);
                 this.setToken(resp.data.token);
                 this.tryAuthenticate()
                     .then(() => {
@@ -94,7 +94,7 @@ export class CurrentUser {
             })
             .catch(() => {
                 this.authenticating = false;
-                return this.snack('Login failed');
+                return this.snack('登录失败');
             });
     };
 
@@ -117,7 +117,7 @@ export class CurrentUser {
                 })
                 .catch((error: AxiosError) => {
                     if (!error || !error.response) {
-                        this.connectionError('No network connection or server unavailable.');
+                        this.connectionError('网络不可用或服务器错误');
                         return Promise.reject(error);
                     }
 
@@ -155,13 +155,13 @@ export class CurrentUser {
     public changePassword = (pass: string) => {
         axios
             .post(config.get('url') + 'current/user/password', {pass})
-            .then(() => this.snack('Password changed'));
+            .then(() => this.snack('密码已更改'));
     };
 
     public tryReconnect = (quiet = false) => {
         this.tryAuthenticate().catch(() => {
             if (!quiet) {
-                this.snack('Reconnect failed');
+                this.snack('重连失败');
             }
         });
     };

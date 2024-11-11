@@ -42,13 +42,13 @@ export default class RegistrationDialog extends Component<IProps, IState> {
                 onClose={fClose}
                 aria-labelledby="form-dialog-title"
                 id="add-edit-user-dialog">
-                <DialogTitle id="form-dialog-title">Registration</DialogTitle>
+                <DialogTitle id="form-dialog-title">注册</DialogTitle>
                 <DialogContent>
                     <TextField
                         autoFocus
                         margin="dense"
                         className="name"
-                        label="Name *"
+                        label="用户名 *"
                         type="email"
                         value={name}
                         onChange={this.handleChange.bind(this, 'name')}
@@ -60,20 +60,20 @@ export default class RegistrationDialog extends Component<IProps, IState> {
                         type="password"
                         value={pass}
                         fullWidth
-                        label="Pass *"
+                        label="密码 *"
                         onChange={this.handleChange.bind(this, 'pass')}
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={fClose}>Cancel</Button>
+                    <Button onClick={fClose}>取消</Button>
                     <Tooltip
                         placement={'bottom-start'}
                         title={
                             namePresent
                                 ? passPresent
                                     ? ''
-                                    : 'password is required'
-                                : 'name is required'
+                                    : '密码是必需的'
+                                : '用户名是必须的'
                         }>
                         <div>
                             <Button
@@ -82,7 +82,7 @@ export default class RegistrationDialog extends Component<IProps, IState> {
                                 onClick={submitAndClose}
                                 color="primary"
                                 variant="contained">
-                                Register
+                                注册
                             </Button>
                         </div>
                     </Tooltip>

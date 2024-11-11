@@ -80,11 +80,8 @@ class Navigation extends Component<
 
         const placeholderItems = [
             <ListItem button disabled key={-1}>
-                <ListItemText primary="Some Server" />
-            </ListItem>,
-            <ListItem button disabled key={-2}>
-                <ListItemText primary="A Raspberry PI" />
-            </ListItem>,
+                <ListItemText primary="插件市场助手" />
+            </ListItem>
         ];
 
         return (
@@ -96,7 +93,7 @@ class Navigation extends Component<
                 <div className={classes.toolbar} />
                 <Link className={classes.link} to="/" onClick={() => setNavOpen(false)}>
                     <ListItem button disabled={!loggedIn} className="all">
-                        <ListItemText primary="All Messages" />
+                        <ListItemText primary="所有消息" />
                     </ListItem>
                 </Link>
                 <Divider />
@@ -109,7 +106,7 @@ class Navigation extends Component<
                                 requestPermission();
                                 this.setState({showRequestNotification: false});
                             }}>
-                            Enable Notifications
+                            允许通知
                         </Button>
                     ) : null}
                 </Typography>

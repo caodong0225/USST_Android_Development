@@ -32,22 +32,22 @@ class SettingsDialog extends Component<IProps & Stores<'currentUser'>> {
                 onClose={fClose}
                 aria-labelledby="form-dialog-title"
                 id="changepw-dialog">
-                <DialogTitle id="form-dialog-title">Change Password</DialogTitle>
+                <DialogTitle id="form-dialog-title">更改密码</DialogTitle>
                 <DialogContent>
                     <TextField
                         className="newpass"
                         autoFocus
                         margin="dense"
                         type="password"
-                        label="New Password *"
+                        label="新密码 *"
                         value={pass}
                         onChange={(e) => (this.pass = e.target.value)}
                         fullWidth
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={fClose}>Cancel</Button>
-                    <Tooltip title={pass.length !== 0 ? '' : 'Password is required'}>
+                    <Button onClick={fClose}>取消</Button>
+                    <Tooltip title={pass.length !== 0 ? '' : '密码是必需的'}>
                         <div>
                             <Button
                                 className="change"
@@ -55,7 +55,7 @@ class SettingsDialog extends Component<IProps & Stores<'currentUser'>> {
                                 onClick={submitAndClose}
                                 color="primary"
                                 variant="contained">
-                                Change
+                                更改
                             </Button>
                         </div>
                     </Tooltip>

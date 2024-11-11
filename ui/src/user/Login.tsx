@@ -22,14 +22,14 @@ class Login extends Component<Stores<'currentUser'>> {
     public render() {
         const {username, password, registerDialog} = this;
         return (
-            <DefaultPage title="Login" rightControl={this.registerButton()} maxWidth={250}>
+            <DefaultPage title="登录" rightControl={this.registerButton()} maxWidth={250}>
                 <Grid item xs={12} style={{textAlign: 'center'}}>
                     <Container>
                         <form onSubmit={this.preventDefault} id="login-form">
                             <TextField
                                 autoFocus
                                 className="name"
-                                label="Username"
+                                label="用户名"
                                 margin="dense"
                                 autoComplete="username"
                                 value={username}
@@ -38,7 +38,7 @@ class Login extends Component<Stores<'currentUser'>> {
                             <TextField
                                 type="password"
                                 className="password"
-                                label="Password"
+                                label="密码"
                                 margin="normal"
                                 autoComplete="current-password"
                                 value={password}
@@ -53,7 +53,7 @@ class Login extends Component<Stores<'currentUser'>> {
                                 disabled={!!this.props.currentUser.connectionErrorMessage}
                                 style={{marginTop: 15, marginBottom: 5}}
                                 onClick={this.login}>
-                                Login
+                                登录
                             </Button>
                         </form>
                     </Container>
@@ -81,7 +81,7 @@ class Login extends Component<Stores<'currentUser'>> {
                     variant="contained"
                     color="primary"
                     onClick={() => (this.registerDialog = true)}>
-                    Register
+                    注册
                 </Button>
             );
         else return null;

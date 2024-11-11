@@ -69,14 +69,14 @@ class Users extends Component<WithStyles<'wrapper'> & Stores<'userStore'>> {
         const users = userStore.getItems();
         return (
             <DefaultPage
-                title="Users"
+                title="用户列表"
                 rightControl={
                     <Button
                         id="create-user"
                         variant="contained"
                         color="primary"
                         onClick={() => (this.createDialog = true)}>
-                        Create User
+                        创建用户
                     </Button>
                 }>
                 <Grid item xs={12}>
@@ -84,8 +84,8 @@ class Users extends Component<WithStyles<'wrapper'> & Stores<'userStore'>> {
                         <Table id="user-table">
                             <TableHead>
                                 <TableRow style={{textAlign: 'center'}}>
-                                    <TableCell>Name</TableCell>
-                                    <TableCell>Admin</TableCell>
+                                    <TableCell>用户名</TableCell>
+                                    <TableCell>是否管理员</TableCell>
                                     <TableCell />
                                 </TableRow>
                             </TableHead>
@@ -120,8 +120,8 @@ class Users extends Component<WithStyles<'wrapper'> & Stores<'userStore'>> {
                 )}
                 {deleteId !== false && (
                     <ConfirmDialog
-                        title="Confirm Delete"
-                        text={'Delete ' + userStore.getByID(deleteId).name + '?'}
+                        title="确定删除吗"
+                        text={'删除 ' + userStore.getByID(deleteId).name + '?'}
                         fClose={() => (this.deleteId = false)}
                         fOnSubmit={() => userStore.remove(deleteId)}
                     />
