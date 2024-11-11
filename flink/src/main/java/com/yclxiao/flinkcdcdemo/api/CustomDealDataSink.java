@@ -36,6 +36,7 @@ public class CustomDealDataSink extends RichSinkFunction<String> {
         JSONObject jsonObject = JSON.parseObject(value);
         Application newApplication = parseApplication(jsonObject,"after");
         Application oldApplication = parseApplication(jsonObject, "before");
+        System.out.println(newApplication);
         if (newApplication != null) {
             switch (jsonObject.getString("op")) {
                 case "c":
@@ -53,7 +54,7 @@ public class CustomDealDataSink extends RichSinkFunction<String> {
                     }
                     if(oldApplication != null)
                     {
-                        if(!(oldApplication.getInterval().equals(newApplication.getInterval())
+                        if(!(oldApplication.getIntervalTime().equals(newApplication.getIntervalTime())
                         && oldApplication.isRunning() == newApplication.isRunning()
                         && oldApplication.isEnabled() == newApplication.isEnabled()
                         && oldApplication.getDescription().equals(newApplication.getDescription()))
@@ -99,9 +100,9 @@ public class CustomDealDataSink extends RichSinkFunction<String> {
         application.setUserId((Integer) jsonObjectNew.get("user_id"));
         application.setName((String) jsonObjectNew.get("name"));
         application.setDescription((String) jsonObjectNew.get("description"));
-        application.setEnabled((Integer) jsonObjectNew.get("enabled") == 1);
+        application.setEnabled((Integer) jsonObjectNew.get("is_enabled") == 1);
         application.setRunning((Integer) jsonObjectNew.get("is_running") == 1);
-        application.setInterval((Integer) jsonObjectNew.get("internal_time"));
+        application.setIntervalTime((Integer) jsonObjectNew.get("interval_time"));
         return application;
     }
 
@@ -124,7 +125,7 @@ public class CustomDealDataSink extends RichSinkFunction<String> {
             Trigger trigger = TriggerBuilder.newTrigger()
                     .withIdentity("StartTrigger-" + application.getId())
                     .withSchedule(SimpleScheduleBuilder.simpleSchedule()
-                            .withIntervalInSeconds(application.getInterval())
+                            .withIntervalInSeconds(application.getIntervalTime())
                             .repeatForever())
                     .build();
             // 表明session没有失效

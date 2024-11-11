@@ -14,7 +14,7 @@ public class Application {
     private Integer userId;
     private String name;
     private String description;
-    private boolean enabled;
+    private boolean isEnabled;
     private boolean isRunning;
-    private Integer interval;
+    private Integer intervalTime;
 }
