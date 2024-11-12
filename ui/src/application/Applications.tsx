@@ -48,7 +48,7 @@ class Applications extends Component<Stores<'appStore'>> {
         const apps = appStore.getItems();
         return (
             <DefaultPage
-                title="Applications"
+                title="应用列表"
                 rightControl={
                     <Button
                         id="create-app"

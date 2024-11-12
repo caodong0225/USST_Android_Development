@@ -29,13 +29,13 @@ export default class AddDialog extends Component<IProps, {name: string}> {
                 onClose={fClose}
                 aria-labelledby="form-dialog-title"
                 id="client-dialog">
-                <DialogTitle id="form-dialog-title">Create a client</DialogTitle>
+                <DialogTitle id="form-dialog-title">创建客户端</DialogTitle>
                 <DialogContent>
                     <TextField
                         autoFocus
                         margin="dense"
                         className="name"
-                        label="Name *"
+                        label="名称 *"
                         type="email"
                         value={name}
                         onChange={this.handleChange.bind(this, 'name')}
@@ -43,10 +43,10 @@ export default class AddDialog extends Component<IProps, {name: string}> {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={fClose}>Cancel</Button>
+                    <Button onClick={fClose}>取消</Button>
                     <Tooltip
                         placement={'bottom-start'}
-                        title={submitEnabled ? '' : 'name is required'}>
+                        title={submitEnabled ? '' : '名称是必须的'}>
                         <div>
                             <Button
                                 className="create"
@@ -54,7 +54,7 @@ export default class AddDialog extends Component<IProps, {name: string}> {
                                 onClick={submitAndClose}
                                 color="primary"
                                 variant="contained">
-                                Create
+                                创建
                             </Button>
                         </div>
                     </Tooltip>

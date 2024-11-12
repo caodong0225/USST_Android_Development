@@ -37,16 +37,16 @@ export default class AddDialog extends Component<IProps, IState> {
                 onClose={fClose}
                 aria-labelledby="form-dialog-title"
                 id="app-dialog">
-                <DialogTitle id="form-dialog-title">Create an application</DialogTitle>
+                <DialogTitle id="form-dialog-title">创建一个应用</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        An application is allowed to send messages.
+                        应用可以用来发送消息
                     </DialogContentText>
                     <TextField
                         autoFocus
                         margin="dense"
                         className="name"
-                        label="Name *"
+                        label="名称 *"
                         type="text"
                         value={name}
                         onChange={this.handleChange.bind(this, 'name')}
@@ -55,7 +55,7 @@ export default class AddDialog extends Component<IProps, IState> {
                     <TextField
                         margin="dense"
                         className="description"
-                        label="Short Description"
+                        label="参数"
                         value={description}
                         onChange={this.handleChange.bind(this, 'description')}
                         fullWidth
@@ -64,15 +64,15 @@ export default class AddDialog extends Component<IProps, IState> {
                     <NumberField
                         margin="dense"
                         className="priority"
-                        label="Default Priority"
+                        label="优先级"
                         value={defaultPriority}
                         onChange={(value) => this.setState({defaultPriority: value})}
                         fullWidth
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={fClose}>Cancel</Button>
-                    <Tooltip title={submitEnabled ? '' : 'name is required'}>
+                    <Button onClick={fClose}>取消</Button>
+                    <Tooltip title={submitEnabled ? '' : '名称是必须的'}>
                         <div>
                             <Button
                                 className="create"
@@ -80,7 +80,7 @@ export default class AddDialog extends Component<IProps, IState> {
                                 onClick={submitAndClose}
                                 color="primary"
                                 variant="contained">
-                                Create
+                                创建
                             </Button>
                         </div>
                     </Tooltip>

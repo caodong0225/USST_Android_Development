@@ -73,7 +73,7 @@ class Messages extends Component<IProps & Stores<'messagesStore' | 'appStore'>, 
                             color="primary"
                             onClick={() => messagesStore.refreshByApp(appId)}
                             style={{marginRight: 5}}>
-                            Refresh
+                            刷新
                         </Button>
                         <Button
                             id="delete-all"
@@ -83,7 +83,7 @@ class Messages extends Component<IProps & Stores<'messagesStore' | 'appStore'>, 
                             onClick={() => {
                                 this.deleteAll = true;
                             }}>
-                            Delete All
+                            删除全部
                         </Button>
                     </div>
                 }>

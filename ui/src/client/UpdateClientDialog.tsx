@@ -42,17 +42,16 @@ export default class UpdateDialog extends Component<IProps, IState> {
                 onClose={fClose}
                 aria-labelledby="form-dialog-title"
                 id="client-dialog">
-                <DialogTitle id="form-dialog-title">Update a Client</DialogTitle>
+                <DialogTitle id="form-dialog-title">更改客户端</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        A client manages messages, clients, applications and users (with admin
-                        permissions).
+                        客户端可以管理用户名，应用和消息 (需要管理员权限).
                     </DialogContentText>
                     <TextField
                         autoFocus
                         margin="dense"
                         className="name"
-                        label="Name *"
+                        label="名称 *"
                         type="text"
                         value={name}
                         onChange={this.handleChange.bind(this, 'name')}
@@ -60,8 +59,8 @@ export default class UpdateDialog extends Component<IProps, IState> {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={fClose}>Cancel</Button>
-                    <Tooltip title={submitEnabled ? '' : 'name is required'}>
+                    <Button onClick={fClose}>取消</Button>
+                    <Tooltip title={submitEnabled ? '' : '名称是必须的'}>
                         <div>
                             <Button
                                 className="update"
@@ -69,7 +68,7 @@ export default class UpdateDialog extends Component<IProps, IState> {
                                 onClick={submitAndClose}
                                 color="primary"
                                 variant="contained">
-                                Update
+                                更新
                             </Button>
                         </div>
                     </Tooltip>

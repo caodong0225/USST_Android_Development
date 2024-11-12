@@ -43,14 +43,14 @@ class Clients extends Component<Stores<'clientStore'>> {
 
         return (
             <DefaultPage
-                title="Clients"
+                title="客户端列表"
                 rightControl={
                     <Button
                         id="create-client"
                         variant="contained"
                         color="primary"
                         onClick={() => (this.showDialog = true)}>
-                        Create Client
+                        创建应用
                     </Button>
                 }>
                 <Grid item xs={12}>
@@ -58,9 +58,9 @@ class Clients extends Component<Stores<'clientStore'>> {
                         <Table id="client-table">
                             <TableHead>
                                 <TableRow style={{textAlign: 'center'}}>
-                                    <TableCell>Name</TableCell>
+                                    <TableCell>名称</TableCell>
                                     <TableCell style={{width: 200}}>Token</TableCell>
-                                    <TableCell>Last Used</TableCell>
+                                    <TableCell>最近使用时间</TableCell>
                                     <TableCell />
                                     <TableCell />
                                 </TableRow>

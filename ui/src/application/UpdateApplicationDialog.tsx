@@ -49,16 +49,16 @@ export default class UpdateDialog extends Component<IProps, IState> {
                 onClose={fClose}
                 aria-labelledby="form-dialog-title"
                 id="app-dialog">
-                <DialogTitle id="form-dialog-title">Update an application</DialogTitle>
+                <DialogTitle id="form-dialog-title">更新应用信息</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        An application is allowed to send messages.
+                        应用可以用来消息推送
                     </DialogContentText>
                     <TextField
                         autoFocus
                         margin="dense"
                         className="name"
-                        label="Name *"
+                        label="应用名称 *"
                         type="text"
                         value={name}
                         onChange={this.handleChange.bind(this, 'name')}
@@ -67,7 +67,7 @@ export default class UpdateDialog extends Component<IProps, IState> {
                     <TextField
                         margin="dense"
                         className="description"
-                        label="Short Description"
+                        label="参数"
                         value={description}
                         onChange={this.handleChange.bind(this, 'description')}
                         fullWidth
@@ -76,7 +76,7 @@ export default class UpdateDialog extends Component<IProps, IState> {
                     <NumberField
                         margin="dense"
                         className="priority"
-                        label="Default Priority"
+                        label="优先级"
                         value={defaultPriority}
                         onChange={(value) => this.setState({defaultPriority: value})}
                         fullWidth
@@ -84,7 +84,7 @@ export default class UpdateDialog extends Component<IProps, IState> {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={fClose}>Cancel</Button>
-                    <Tooltip title={submitEnabled ? '' : 'name is required'}>
+                    <Tooltip title={submitEnabled ? '' : '应用名是必须的'}>
                         <div>
                             <Button
                                 className="update"

@@ -46,15 +46,15 @@ export default class AddEditDialog extends Component<IProps, IState> {
                 aria-labelledby="form-dialog-title"
                 id="add-edit-user-dialog">
                 <DialogTitle id="form-dialog-title">
-                    {isEdit ? 'Edit ' + this.props.name : 'Add a user'}
+                    {isEdit ? '编辑 ' + this.props.name : '添加用户'}
                 </DialogTitle>
                 <DialogContent>
                     <TextField
                         autoFocus
                         margin="dense"
                         className="name"
-                        label="Name *"
-                        type="email"
+                        label="用户名 *"
+                        type="text"
                         value={name}
                         onChange={this.handleChange.bind(this, 'name')}
                         fullWidth
@@ -65,7 +65,7 @@ export default class AddEditDialog extends Component<IProps, IState> {
                         type="password"
                         value={pass}
                         fullWidth
-                        label={isEdit ? 'Pass (empty if no change)' : 'Pass *'}
+                        label={isEdit ? '密码 (如无变化则留空)' : '密码 *'}
                         onChange={this.handleChange.bind(this, 'pass')}
                     />
                     <FormControlLabel
@@ -77,7 +77,7 @@ export default class AddEditDialog extends Component<IProps, IState> {
                                 value="admin"
                             />
                         }
-                        label="has administrator rights"
+                        label="拥有管理员权限"
                     />
                 </DialogContent>
                 <DialogActions>
