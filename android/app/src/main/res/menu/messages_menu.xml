@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:orderInCategory="0"
+            android:icon="@drawable/ic_dashboard"
+            android:id="@+id/nav_all_messages"
+            android:title="@string/all_messages" />
+    </group>
+    <group
+        android:id="@+id/apps"
+        android:checkableBehavior="single">
+
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:orderInCategory="2"
+            android:icon="@drawable/ic_send"
+            android:id="@+id/push_message"
+            android:title="@string/push_message"
+            />
+        <item
+            android:icon="@drawable/ic_settings"
+            android:orderInCategory="2"
+            android:id="@+id/settings"
+            android:title="@string/title_activity_settings" />
+        <item
+            android:orderInCategory="2"
+            android:icon="@drawable/ic_bug_report"
+            android:id="@+id/nav_logs"
+            android:title="@string/logs" />
+        <item
+            android:icon="@drawable/ic_power_setting"
+            android:orderInCategory="2"
+            android:id="@+id/logout"
+            android:title="@string/logout" />
+    </group>
+
+</menu>
