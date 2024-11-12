@@ -16,7 +16,7 @@ import {ClientStore} from './client/ClientStore';
 import {PluginStore} from './plugin/PluginStore';
 import {registerReactions} from './reactions';
 
-const devUrl = 'http://localhost:3000/';
+const devUrl = 'http://localhost/';
 
 const {port, hostname, protocol, pathname} = window.location;
 const slashes = protocol.concat('//');

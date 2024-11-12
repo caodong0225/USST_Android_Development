@@ -188,15 +188,8 @@ func (a *UserAPI) CreateUser(ctx *gin.Context) {
 			}
 		}
 
-		if requestedBy == nil || !requestedBy.Admin {
+		if requestedBy == nil {
 			status := http.StatusUnauthorized
-			if requestedBy != nil {
-				status = http.StatusForbidden
-			}
-			if !a.Registration {
-				ctx.AbortWithError(status, errors.New("you are not allowed to access this api"))
-				return
-			}
 			if internal.Admin {
 				ctx.AbortWithError(status, errors.New("you are not allowed to create an admin user"))
 				return
