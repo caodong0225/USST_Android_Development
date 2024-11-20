@@ -80,10 +80,15 @@ class Applications extends Component<Stores<'appStore'>> {
                                 {apps.map((app: IApplication) => (
                                     <Row
                                         key={app.id}
-                                        description={app.description}
+                                        description={
+                                            app.isEnabled ?
+                                                app.description.length > 6 ? app.description.substring(0, 6) + '......' + app.description.substring(app.description.length - 6) : app.description
+                                                :
+                                                "参数失效！"
+                                        }
                                         defaultPriority={app.defaultPriority}
-                                        image={app.image}
-                                        name={app.name}
+                                        image={app.isEnabled ? app.image : 'static/unknown.png'}
+                                        name={app.isEnabled ? app.name : "出错了！"}
                                         value={app.token}
                                         lastUsed={app.lastUsed}
                                         fUpload={() => this.uploadImage(app.id)}

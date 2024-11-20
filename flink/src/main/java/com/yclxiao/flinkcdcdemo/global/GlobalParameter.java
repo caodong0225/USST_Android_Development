@@ -16,7 +16,7 @@ public class GlobalParameter {
     public static int MYSQL_PORT = 3306;
     public static String MYSQL_USER = "root";
     public static String MYSQL_PASSWD = "123456";
-    public static String SYNC_DB = "gotifydb";
-    public static String SYNC_TABLES = "gotifydb.applications";
+    public static String SYNC_DB = "plugins";
+    public static String SYNC_TABLES = "plugins.applications";
     public static int MAX_LIST_SIZE = 1000;
 }
