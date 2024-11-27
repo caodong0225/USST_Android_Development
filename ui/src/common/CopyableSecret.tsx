@@ -39,10 +39,10 @@ class CopyableSecret extends Component<IProps & Stores<'snackManager'>, IState> 
         const {snackManager, value} = this.props;
         try {
             await navigator.clipboard.writeText(value);
-            snackManager.snack('Copied to clipboard');
+            snackManager.snack('已复制');
         } catch (error) {
             console.error('Failed to copy to clipboard:', error);
-            snackManager.snack('Failed to copy to clipboard');
+            snackManager.snack('复制失败');
         }
     };
 }

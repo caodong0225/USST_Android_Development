@@ -3,7 +3,7 @@ import Switch from '@material-ui/core/Switch';
 import { inject, Stores } from '../inject';
 
 interface IProps {
-    isAuto: boolean;
+    isRunning: boolean;
     onToggle: (newValue: boolean) => void;
     style?: React.CSSProperties;
 }
@@ -14,7 +14,7 @@ interface IState {
 
 class AutoSwitch extends Component<IProps & Stores<'snackManager'>, IState> {
     public state = {
-        checked: this.props.isAuto,
+        checked: this.props.isRunning
     };
 
     public render() {

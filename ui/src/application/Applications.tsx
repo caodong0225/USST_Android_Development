@@ -99,7 +99,7 @@ class Applications extends Component<Stores<'appStore'>> {
                                             (newValue) => (this.props.appStore.setAuto(app.id,newValue))
                                         }
                                         interval={app.intervalTime}
-                                        enabled = {app.isEnabled}
+                                        enabled = {app.isRunning}
                                     />
                                 ))}
                             </TableBody>
@@ -214,7 +214,7 @@ const Row: SFC<IRowProps> = observer(
             </TableCell>
             <TableCell>
                 <AutoSwitch
-                    isAuto={enabled}
+                    isRunning={enabled}
                     onToggle={fSetAuto}
                 />
             </TableCell>

@@ -168,6 +168,8 @@ func Create(db *database.GormDatabase, vInfo *model.VersionInfo, conf *config.Co
 
 			app.DELETE("/:id", applicationHandler.DeleteApplication)
 
+			app.PUT("/enabled/:id", applicationHandler.UpdateApplicationRunning)
+
 			tokenMessage := app.Group("/:id/message")
 			{
 				tokenMessage.GET("", messageHandler.GetMessagesWithApplication)

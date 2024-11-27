@@ -50,6 +50,19 @@ type ApplicationParams struct {
 	DefaultPriority int `form:"defaultPriority" query:"defaultPriority" json:"defaultPriority"`
 }
 
+// Application Auto Model
+//
+// Params allowed to create or update Applications.
+//
+// swagger:model ApplicationRunning
+type ApplicationRunning struct {
+	// The application auto status.
+	//
+	// required: true
+	// example: true
+	IsAuto bool `form:"isAuto" query:"isAuto" json:"isAuto"`
+}
+
 // CreateApplication creates an application and returns the access token.
 // swagger:operation POST /application application createApp
 //
@@ -259,6 +272,53 @@ func (a *ApplicationAPI) UpdateApplication(ctx *gin.Context) {
 			}
 		} else {
 			ctx.AbortWithError(404, fmt.Errorf("app with id %d doesn't exists", id))
+		}
+	})
+}
+
+// UpdateApplicationRunning updates an application info by its id.
+// swagger:operation PUT /application/enabled/{id} application updateApplicationAuto
+//
+// Update application auto set.
+//
+//	---
+//	consumes: [application/json]
+//	produces: [application/json]
+//	security: [clientTokenAuthorizationHeader: [], clientTokenHeader: [], clientTokenQuery: [], basicAuth: []]
+//	parameters:
+//	parameters:
+//	- name: body
+//	  in: body
+//	  description: the application to update
+//	  required: true
+//	  schema:
+//	    $ref: "#/definitions/ApplicationRunning"
+//	- name: id
+//	  in: path
+//	  description: the application id
+//	  required: true
+//	  type: integer
+//	  format: int64
+//	responses:
+//	  200:
+//	    description: Ok
+func (a *ApplicationAPI) UpdateApplicationRunning(ctx *gin.Context) {
+	withID(ctx, "id", func(id uint) {
+		app, err := a.DB.GetApplicationByID(id)
+		if success := successOrAbort(ctx, 500, err); !success {
+			return
+		}
+		if app != nil && app.UserID == auth.GetUserID(ctx) {
+			applicationParams := ApplicationRunning{}
+			if err := ctx.Bind(&applicationParams); err == nil {
+				app.IsRunning = applicationParams.IsAuto
+				if success := successOrAbort(ctx, 500, a.DB.UpdateApplication(app)); !success {
+					return
+				}
+				ctx.JSON(200, withResolvedImage(app))
+			}
+		} else {
+			ctx.AbortWithError(404, fmt.Errorf("应用 %d 不存在", id))
 		}
 	})
 }
