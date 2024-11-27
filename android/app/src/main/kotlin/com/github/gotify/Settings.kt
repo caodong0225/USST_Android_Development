@@ -52,7 +52,7 @@ internal class Settings(context: Context) {
     fun tokenExists(): Boolean = !token.isNullOrEmpty()
 
     fun clear() {
-        url = ""
+        url = defaultUrl
         token = null
         validateSSL = true
         legacyCert = null

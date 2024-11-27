@@ -119,6 +119,7 @@ internal class LoginActivity : AppCompatActivity() {
         binding.openLogs.setOnClickListener { openLogs() }
         binding.advancedSettings.setOnClickListener { toggleShowAdvanced() }
         binding.login.setOnClickListener { doLogin() }
+        binding.registerPage.setOnClickListener { doRegister() }
     }
 
     private fun invalidateUrl() {
@@ -126,6 +127,10 @@ internal class LoginActivity : AppCompatActivity() {
         binding.password.visibility = View.GONE
         binding.login.visibility = View.GONE
         binding.checkurl.text = getString(R.string.check_url)
+    }
+
+    private fun doRegister() {
+        startActivity(Intent(this, RegisterActivity::class.java))
     }
 
     private fun doCheckUrl() {

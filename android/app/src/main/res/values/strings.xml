@@ -105,11 +105,15 @@
     <string name="push_priority_hint">优先级</string>
     <string name="push_missing_app_info">服务器上没有可用的应用程序来推送消息。</string>
     <string name="message_copied_to_clipboard">内容已复制到剪贴板</string>
-    <string name="not_loggedin_share">无法分享给 Gotify，因为您尚未登录。</string>
+    <string name="not_loggedin_share">无法分享，因为您尚未登录。</string>
     <string name="action_dialog_missing">缺少 URL</string>
     <string name="action_dialog_message">您收到了一条带有意图 URL 的消息：</string>
     <string name="action_dialog_button_open">打开</string>
     <string name="action_dialog_button_cancel">取消</string>
+    <string name="register_username">用户名</string>
+    <string name="register_password">密码</string>
+    <string name="register_confirm">注册</string>
+    <string name="register_page">注册</string>
 
     <string name="websocket_error">错误 %s（请查看日志）</string>
     <string name="websocket_reconnect">尝试重新连接</string>
