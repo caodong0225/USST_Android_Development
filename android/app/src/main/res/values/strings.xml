@@ -119,6 +119,7 @@
     </plurals>
 
     <string name="notification_channel_title_foreground">服务前台通知</string>
+    <string name="notification_channel_title_normal">普通优先级消息</string>
     <string name="notification_channel_title_min">最低优先级消息（&lt;1）</string>
     <string name="notification_channel_title_low">低优先级消息（=1）</string>
     <string name="notification_channel_title_default">普通优先级消息（=2）</string>
