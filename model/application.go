@@ -59,15 +59,17 @@ type Application struct {
 	// required: false
 	// example: 1
 	// default value is: true
-	IsEnabled bool `form:"is_enabled" query:"is_enabled" json:"is_enabled" default:"true"`
+	IsEnabled bool `gorm:"default:true" form:"is_enabled" query:"is_enabled" json:"is_enabled"`
+
 	// If the application is running
 	//
 	// required: false
 	// example: 1
-	IsRunning bool `form:"is_running" query:"is_running" json:"is_running" default:"true"`
+	IsRunning bool `gorm:"default:true" form:"is_running" query:"is_running" json:"is_running"`
+
 	// The application interval time
 	//
 	// required: false
 	// example: 5
-	IntervalTime int `form:"interval_time" query:"interval_time" json:"interval_time" default:"5"`
+	IntervalTime int `gorm:"default:5" form:"interval_time" query:"interval_time" json:"interval_time"`
 }
