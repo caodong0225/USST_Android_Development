@@ -121,12 +121,12 @@ class Applications extends Component<Stores<'appStore'>> {
                 {updateId !== false && (
                     <UpdateDialog
                         fClose={() => (this.updateId = false)}
-                        fOnSubmit={(name, description, defaultPriority) =>
-                            appStore.update(updateId, name, description, defaultPriority)
+                        fOnSubmit={(name, description, defaultInterval) =>
+                            appStore.update(updateId, name, description, defaultInterval)
                         }
                         initialDescription={appStore.getByID(updateId).description}
                         initialName={appStore.getByID(updateId).name}
-                        initialDefaultPriority={appStore.getByID(updateId).defaultPriority}
+                        initialInterval={appStore.getByID(updateId).intervalTime}
                     />
                 )}
                 {deleteId !== false && (
@@ -184,7 +184,7 @@ const Row: SFC<IRowProps> = observer(
         value,
         noDelete,
         description,
-        defaultPriority,
+         defaultPriority,
         lastUsed,
         fDelete,
         fUpload,

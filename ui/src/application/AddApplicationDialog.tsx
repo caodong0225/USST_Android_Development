@@ -11,24 +11,25 @@ import React, {Component} from 'react';
 
 interface IProps {
     fClose: VoidFunction;
-    fOnSubmit: (name: string, description: string, defaultPriority: number) => void;
+    fOnSubmit: (name: string, description: string, defaultInterval: number) => void;
 }
 
 interface IState {
     name: string;
     description: string;
-    defaultPriority: number;
+    defaultInterval: number;
 }
 
 export default class AddDialog extends Component<IProps, IState> {
-    public state = {name: '', description: '', defaultPriority: 0};
+    public state = {name: '', description: '', defaultInterval: 5};
 
     public render() {
         const {fClose, fOnSubmit} = this.props;
-        const {name, description, defaultPriority} = this.state;
-        const submitEnabled = this.state.name.length !== 0;
+        const {name, description, defaultInterval} = this.state;
+        const submitEnabled = this.state.name.length !== 0
+        const intervalEnabled = this.state.defaultInterval >= 5
         const submitAndClose = () => {
-            fOnSubmit(name, description, defaultPriority);
+            fOnSubmit(name, description, defaultInterval);
             fClose();
         };
         return (
@@ -63,20 +64,20 @@ export default class AddDialog extends Component<IProps, IState> {
                     />
                     <NumberField
                         margin="dense"
-                        className="priority"
-                        label="优先级"
-                        value={defaultPriority}
-                        onChange={(value) => this.setState({defaultPriority: value})}
+                        className="interval"
+                        label="刷新频率"
+                        value={defaultInterval}
+                        onChange={(value) => this.setState({defaultInterval: value})}
                         fullWidth
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={fClose}>取消</Button>
-                    <Tooltip title={submitEnabled ? '' : '名称是必须的'}>
+                    <Tooltip title={submitEnabled ? intervalEnabled ? '' : '间隔必须大于等于5' : '名称是必须的'}>
                         <div>
                             <Button
                                 className="create"
-                                disabled={!submitEnabled}
+                                disabled={!submitEnabled || !intervalEnabled}
                                 onClick={submitAndClose}
                                 color="primary"
                                 variant="contained">

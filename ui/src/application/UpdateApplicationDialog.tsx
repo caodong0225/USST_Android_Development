@@ -11,36 +11,37 @@ import React, {Component} from 'react';
 
 interface IProps {
     fClose: VoidFunction;
-    fOnSubmit: (name: string, description: string, defaultPriority: number) => void;
+    fOnSubmit: (name: string, description: string, interval: number) => void;
     initialName: string;
     initialDescription: string;
-    initialDefaultPriority: number;
+    initialInterval: number;
 }
 
 interface IState {
     name: string;
     description: string;
-    defaultPriority: number;
+    interval: number;
 }
 
 export default class UpdateDialog extends Component<IProps, IState> {
-    public state = {name: '', description: '', defaultPriority: 0};
+    public state = {name: '', description: '', interval: 5};
 
     constructor(props: IProps) {
         super(props);
         this.state = {
             name: props.initialName,
             description: props.initialDescription,
-            defaultPriority: props.initialDefaultPriority,
+            interval: props.initialInterval,
         };
     }
 
     public render() {
         const {fClose, fOnSubmit} = this.props;
-        const {name, description, defaultPriority} = this.state;
+        const {name, description, interval} = this.state;
         const submitEnabled = this.state.name.length !== 0;
+        const intervalEnabled = this.state.interval >= 5;
         const submitAndClose = () => {
-            fOnSubmit(name, description, defaultPriority);
+            fOnSubmit(name, description, interval);
             fClose();
         };
         return (
@@ -60,6 +61,7 @@ export default class UpdateDialog extends Component<IProps, IState> {
                         className="name"
                         label="应用名称 *"
                         type="text"
+                        disabled={true}
                         value={name}
                         onChange={this.handleChange.bind(this, 'name')}
                         fullWidth
@@ -75,24 +77,24 @@ export default class UpdateDialog extends Component<IProps, IState> {
                     />
                     <NumberField
                         margin="dense"
-                        className="priority"
-                        label="优先级"
-                        value={defaultPriority}
-                        onChange={(value) => this.setState({defaultPriority: value})}
+                        className="interval"
+                        label="刷新频率"
+                        value={interval}
+                        onChange={(value) => this.setState({interval: value})}
                         fullWidth
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={fClose}>Cancel</Button>
-                    <Tooltip title={submitEnabled ? '' : '应用名是必须的'}>
+                    <Button onClick={fClose}>取消</Button>
+                    <Tooltip title={submitEnabled ? intervalEnabled ? '' : '间隔必须大于等于5' : '应用名是必须的'}>
                         <div>
                             <Button
                                 className="update"
-                                disabled={!submitEnabled}
+                                disabled={!submitEnabled || !intervalEnabled}
                                 onClick={submitAndClose}
                                 color="primary"
                                 variant="contained">
-                                Update
+                                更新
                             </Button>
                         </div>
                     </Tooltip>
