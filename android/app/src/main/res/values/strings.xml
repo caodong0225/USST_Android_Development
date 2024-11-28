@@ -96,14 +96,14 @@
     <string name="setting_key_intent_dialog_permission">意图操作权限</string>
     <string name="setting_summary_intent_dialog_permission">要始终显示传入意图 URL，请授予权限将此应用显示在其他应用上方。</string>
     <string name="setting_summary_intent_dialog_permission_granted">权限已授予。</string>
-    <string name="push_message">推送消息</string>
+    <string name="push_message">更改应用</string>
     <string name="appListDescription">应用：</string>
     <string name="priorityDescription">优先级：</string>
-    <string name="push_button">推送消息</string>
+    <string name="push_button">更改应用</string>
     <string name="push_title_hint">标题</string>
     <string name="push_content_hint">内容</string>
     <string name="push_priority_hint">优先级</string>
-    <string name="push_missing_app_info">服务器上没有可用的应用程序来推送消息。</string>
+    <string name="push_missing_app_info">服务器上没有可用的应用程序。</string>
     <string name="message_copied_to_clipboard">内容已复制到剪贴板</string>
     <string name="not_loggedin_share">无法分享，因为您尚未登录。</string>
     <string name="action_dialog_missing">缺少 URL</string>
